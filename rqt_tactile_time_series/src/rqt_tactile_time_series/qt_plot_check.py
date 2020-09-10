@@ -113,10 +113,12 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _combo_chosen(self, value):
-        rospy.loginfo('_combo_chosen = %s !',value)
+        int_value_choosen=int(self._combo.itemText(value))
+        rospy.loginfo('_combo_chosen value = %d !',int_value_choosen)
+        
         for v in self._listNamesValuesClicked:
             if (self._listNamesValuesClicked[v] == True):
-                self._qwtDataPlot.update_curve_with(v, self._listColorValues[v], int(self._combo.itemData(value)))
+                self._qwtDataPlot.update_curve_with(v, self._listColorValues[v], int_value_choosen)
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_pac0(self,value):
