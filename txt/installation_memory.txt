@@ -1,0 +1,21 @@
+Laurent LEQUIEVRE
+
+pyqtgraph documentation :
+https://pyqtgraph.readthedocs.io/en/latest/
+
+https://www.learnpyqt.com/courses/graphics-plotting/plotting-pyqtgraph/
+https://python.hotexamples.com/fr/examples/pyqtgraph/PlotWidget/addItem/python-plotwidget-additem-method-examples.html
+
+
+installation de la lib pyqtgraph à partir du github : (https://github.com/pyqtgraph/pyqtgraph)
+cd ~/git_projects
+git clone https://github.com/pyqtgraph/pyqtgraph.git
+sudo python setup.py install
+
+
+If you rename a package of a rqt plugin, remove a file on your disk :
+rm ~/.config/ros.org/rqt_gui.ini
+
+
+
+
