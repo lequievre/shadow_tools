@@ -1,0 +1,40 @@
+open a terminal window :
+docker start dexterous_hand_real_hw
+
+split horizontal window of terminal docker window :
+script store position :
+rosrun sr_example sr_store_hand.py
+
+rqt plugins:
+rqt
+
+plugins-> shadow robot -> joint slider
+plgins -> shadow robot -> advanced -> biotacs
+
+change controller to position or trajectory control (the default control):
+rqt
+plugins-> shadow robot ->  change controllers -> right hand ( button Position ctl or button Trajectory ctl)
+
+demos :
+rosrun sr_ethercat_hand_config demo_r.py
+
+tactile topic:
+rostopic echo /rh/tactile/tactiles[0]/electrodes
+
+
+examples directory:
+~/projects/shadow_robot/base/src/sr_interface/sr_example/scripts/sr_example/hand_examples
+
+
+ros-melodic-moveit-commander
+ros-melodic-moveit-ros-perception
+
+some docker copy samples:
+docker cp dexterous_hand_real_hw:/home/user/projects/shadow_robot/base/src/sr_interface/sr_example/scripts/sr_example/advanced/sr_publisher_example.py .
+
+docker cp ./sr_open_hand.py dexterous_hand_real_hw:/home/user/projects/shadow_robot/base/src/sr_interface/sr_example/scripts/sr_example/hand_examples
+docker exec -it --user user dexterous_hand_real_hw /ros_entrypoint.sh bash -c 'source /home/user/projects/shadow_robot/base_deps/devel/setup.bash;source /home/user/projects/shadow_robot/base/devel/setup.bash; chmod +x /home/user/projects/shadow_robot/base/src/sr_interface/sr_example/scripts/sr_example/hand_examples/sr_open_hand.py ;rosrun sr_example sr_open_hand.py'
+
+shadow robot github:
+https://github.com/shadow-robot
+
