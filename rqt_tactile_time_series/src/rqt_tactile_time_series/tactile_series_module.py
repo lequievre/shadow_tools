@@ -29,7 +29,7 @@ class TactileSeriesPlugin(Plugin):
     def __init__(self,context):
         super(TactileSeriesPlugin, self).__init__(context)
         
-        rospy.loginfo('TactileSeriesPlugin -> __init__')
+        #rospy.loginfo('TactileSeriesPlugin -> __init__')
 
          # Give QObjects reasonable names
         self.setObjectName('TactilePlugin')

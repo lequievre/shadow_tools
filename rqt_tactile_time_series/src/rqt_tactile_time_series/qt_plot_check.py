@@ -5,13 +5,6 @@ import rospy
 from pyqtgraph.Qt import QtGui
 from pyqtgraph.Qt import QtCore
 
-#from pyqtgraph.Qt.QtGui import QColor
-#from pyqtgraph.Qt.QtGui import QWidget, QSizePolicy, QVBoxLayout, QHBoxLayout
-#from pyqtgraph.Qt.QtGui import QCheckBox, QComboBox
-#from pyqtgraph.Qt.QtCore import Qt, QObject, pyqtSlot, Signal, Slot
-
-#from pyqtgraph.Qt.QtCore import QTimer
-
 from qwt_data_plot import QwtDataPlot
 import matplotlib.pylab as plt
 
@@ -23,7 +16,7 @@ class QtPlotChecked(QtGui.QWidget):
     def __init__(self, name=None, parent=None):
         super(QtPlotChecked, self).__init__(parent)
         
-        rospy.loginfo('QtPlotChecked -> __init__')
+        #rospy.loginfo('QtPlotChecked -> __init__')
 
         # name of the plot widget
         self._name = name
@@ -64,7 +57,6 @@ class QtPlotChecked(QtGui.QWidget):
         self._combo.setCurrentIndex(2)
 
         # connect to the slot '_combo_chosen' when the width's curve has changed
-        #QtCore.QObject.connect(self._combo,SIGNAL("activated(QString)"),self,SLOT("_combo_chosen(QString)"))
         self._combo.activated.connect(self._combo_chosen)
         
         vbox = QtGui.QVBoxLayout()
@@ -90,12 +82,6 @@ class QtPlotChecked(QtGui.QWidget):
         self._listCheck['tac'].stateChanged.connect(self._checkedSlot_tac)
         self._listCheck['tdc'].stateChanged.connect(self._checkedSlot_tdc) 
         
-        #QtCore.QObject.connect(self._listCheck['pac0'],SIGNAL("stateChanged(int)"),self,SLOT("_checkedSlot_pac0(int)"))
-        #QtCore.QObject.connect(self._listCheck['pac1'],SIGNAL("stateChanged(int)"),self,SLOT("_checkedSlot_pac1(int)"))
-        #QtCore.QObject.connect(self._listCheck['pdc'],SIGNAL("stateChanged(int)"),self,SLOT("_checkedSlot_pdc(int)"))
-        #QtCore.QObject.connect(self._listCheck['tac'],SIGNAL("stateChanged(int)"),self,SLOT("_checkedSlot_tac(int)"))
-        #QtCore.QObject.connect(self._listCheck['tdc'],SIGNAL("stateChanged(int)"),self,SLOT("_checkedSlot_tdc(int)"))
-
         hbox = QtGui.QHBoxLayout()
         hbox.addLayout(vbox)
         hbox.addLayout(vboxCheck)
@@ -114,7 +100,7 @@ class QtPlotChecked(QtGui.QWidget):
     @QtCore.pyqtSlot(int)
     def _combo_chosen(self, value):
         int_value_choosen=int(self._combo.itemText(value))
-        rospy.loginfo('_combo_chosen value = %d !',int_value_choosen)
+        #rospy.loginfo('_combo_chosen value = %d !',int_value_choosen)
         
         for v in self._listNamesValuesClicked:
             if (self._listNamesValuesClicked[v] == True):
@@ -122,7 +108,7 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_pac0(self,value):
-        rospy.loginfo('_checkedSlot_pac0 !')
+        #rospy.loginfo('_checkedSlot_pac0 !')
         name = 'pac0'
         if (value == QtCore.Qt.Checked):
             self._listNamesValuesClicked[name] = True
@@ -133,7 +119,7 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_pac1(self,value):
-        rospy.loginfo('_checkedSlot_pac1 !')
+        #rospy.loginfo('_checkedSlot_pac1 !')
         name = 'pac1'
         if (value == QtCore.Qt.Checked):
             self._listNamesValuesClicked[name] = True
@@ -144,7 +130,7 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_pdc(self,value):
-        rospy.loginfo('_checkedSlot_pdc !')
+        #rospy.loginfo('_checkedSlot_pdc !')
         name = 'pdc'
         if (value == QtCore.Qt.Checked):
             self._listNamesValuesClicked[name] = True
@@ -155,7 +141,7 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_tac(self,value):
-        rospy.loginfo('_checkedSlot_tac !')
+        #rospy.loginfo('_checkedSlot_tac !')
         name = 'tac'
         if (value == QtCore.Qt.Checked):
             self._listNamesValuesClicked[name] = True
@@ -166,7 +152,7 @@ class QtPlotChecked(QtGui.QWidget):
 
     @QtCore.pyqtSlot(int)
     def _checkedSlot_tdc(self,value):
-        rospy.loginfo('_checkedSlot_tdc !')
+        #rospy.loginfo('_checkedSlot_tdc !')
         name = 'tdc'
         if (value == QtCore.Qt.Checked):
             self._listNamesValuesClicked[name] = True
