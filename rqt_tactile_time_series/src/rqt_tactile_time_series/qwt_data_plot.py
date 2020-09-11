@@ -62,8 +62,9 @@ class QwtDataPlot(pg.PlotWidget):
     # enable to change the default curve width
     def update_curve_with(self, curve_id, curve_color, curve_width):
         self._curve_width = curve_width
-        pen = QtGui.QPen(curve_color)
-        pen.setWidth(curve_width)
+        pen = pg.mkPen(color=curve_color, width=self._curve_width, style=QtCore.Qt.DashLine)
+        #pen = QtGui.QPen(curve_color)
+        #pen.setWidth(curve_width)
         self._curves[curve_id].setPen(pen)
 
     # add a curve to the widget
@@ -72,8 +73,9 @@ class QwtDataPlot(pg.PlotWidget):
         curve_id = str(curve_id)
         if curve_id in self._curves:
             return
-        pen = QtGui.QPen(curve_color)
-        pen.setWidth(self._curve_width)
+        pen = pg.mkPen(color=curve_color, width=self._curve_width, style=QtCore.Qt.DashLine)
+        #pen = QtGui.QPen(curve_color)
+        #pen.setWidth(self._curve_width)
         self._curves[curve_id] = self.plot([], [], name=curve_id, pen=pen)
         self._curves[curve_id].setPen(pen)
         
